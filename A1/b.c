@@ -1,18 +1,44 @@
-#include<stdio.h>'
-#include<string.h>
+#include<stdio.h>
+#include<stdlib.h>
 
-struct node{
-    char c;
-    struct node* forward;
-    struct node* backward;
+#define node struct node
+
+node{
+    char character;
+    node* forward;
+    node* backward;
 };
 
 
 int main(){
     int n;
-    scanf("%d" , &n);
-    char s[1005];
-    scnaf("%s" , s);
-    int len_s = strlen(s);
+    scanf("%d%*c" , &n);
+    char ch;
+    node* head;
+    node* tail;
+    node* prev = (node*)malloc(sizeof(node));
+    for(int i = 0 ; i < n ; i++){
+        scanf("%c" , &ch);
+        node* temp = (node*)malloc(sizeof(node));
+        temp -> character = ch;
+        if(i){
+            temp -> backward = prev;
+            prev -> forward = temp;
+            prev = temp;
+        }else{
+            temp -> backward = NULL;
+            prev = temp;
+            head = temp;
+        }
+    }
+    prev -> forward = NULL;
+    tail = prev;
+    int l = 0 , r = n-1;
+    while(l <= r){
+        if(head->character != tail->character) return printf("NOT A PALINDROME\n");
+        head = head -> forward , l++;
+        tail = tail -> backward  , r--;
+    }
+    printf("PALINDROME\n");
     return 0;
 }
