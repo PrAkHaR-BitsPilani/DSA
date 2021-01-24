@@ -39,12 +39,13 @@ int main(){
     node* temp;
     while (n--)
     {
-        char command[5];
-        scanf("%s", command);
-        switch (command[0])
+        char command;
+        scanf("%c", &command);
+        switch (command)
         {
         case 'L':
-            if (command[1] == 'S')
+            scanf("%c%*c", &command);
+            if (command == 'S')
             {
                 temp = head;
                 while(temp -> forward != NULL){
@@ -65,7 +66,8 @@ int main(){
             }
             break;
         case 'R':
-            if (command[1] == 'S')
+            scanf("%c%*c", &command);
+            if (command == 'S')
             {
                 temp = tail;
                 while(temp -> backward != NULL){
@@ -86,6 +88,8 @@ int main(){
             }
             break;
         case 'I':
+                scanf("%*c%*c%*c");
+                temp = tail;
                 x = 1;
                 while(temp != NULL){
                     int sum = (temp -> val) + x;
@@ -95,8 +99,15 @@ int main(){
                 }
             break;
         case 'D':
+                scanf("%*c%*c%*c");
                 temp = tail;
-                x = 1;
+                x = 0;
+                while(temp != NULL){
+                    int sum = (temp -> val) + x + 1;
+                    temp -> val = sum % 2;
+                    x = sum / 2;
+                    temp = temp -> backward;
+                }
             break;
         }
     }

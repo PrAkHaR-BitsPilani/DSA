@@ -7,7 +7,16 @@
 	"settings": {
 		"files.associations": {
 			"*.tcc": "c",
-			"limits": "c"
+			"limits": "c",
+			"climits": "c",
+			"cmath": "c",
+			"cstdarg": "c",
+			"cstdio": "c",
+			"cstdlib": "c",
+			"cwchar": "c",
+			"cwctype": "c",
+			"type_traits": "c",
+			"typeinfo": "c"
 		}
 	}
 }
