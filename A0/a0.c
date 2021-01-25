@@ -4,8 +4,8 @@ int main()
 {
     char a[1005];
     char b[1005];
-    scanf("%s", &a);
-    scanf("%s", &b);
+    scanf("%s", a);
+    scanf("%s", b);
     int lenA = 0, lenB = 0;
     while (a[lenA] != '\0')lenA++;
     while (b[lenB] != '\0')lenB++;
