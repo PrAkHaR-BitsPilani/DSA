@@ -39,6 +39,6 @@ int main(){
         minCost = min(minCost , temp);
 
     }
-    printf("%d\n" , maxCost - minCost);
+    printf("%d" , maxCost - minCost);
     return 0;
 }

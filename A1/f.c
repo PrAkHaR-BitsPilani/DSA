@@ -50,7 +50,7 @@ void computeFreq(long long L , long long  R , int n){
             dig = i;
         }
     }
-    printf("%d %d\n" , dig , ans);
+    printf("%d %d" , dig , ans);
 }
 
 int main(){

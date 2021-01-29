@@ -26,6 +26,6 @@ int main(){
         }
         i++;
     }
-    printf("%d\n" , ans);
+    printf("%d" , ans);
     return 0;
 }

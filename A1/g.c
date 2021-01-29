@@ -48,6 +48,5 @@ int main()
     printf("%d\n" , key);
     for(int i = 0 ; i < n; i++)
         if(ans[i])printf("%d " , ans[i]);
-    printf("\n");
     return 0;
 }

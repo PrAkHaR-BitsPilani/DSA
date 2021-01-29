@@ -23,6 +23,6 @@ int main(){
         }
         if(current > maxSeat)maxSeat = current;
     }
-    printf("%d\n" , maxSeat);
+    printf("%d" , maxSeat);
     return 0;
 }

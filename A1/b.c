@@ -35,10 +35,10 @@ int main(){
     tail = prev;
     int l = 0 , r = n-1;
     while(l <= r){
-        if(head->character != tail->character) return printf("NOT A PALINDROME\n");
+        if(head->character != tail->character) return printf("NOT A PALINDROME");
         head = head -> forward , l++;
         tail = tail -> backward  , r--;
     }
-    printf("PALINDROME\n");
+    printf("PALINDROME");
     return 0;
 }

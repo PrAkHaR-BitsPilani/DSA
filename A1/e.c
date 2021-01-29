@@ -115,6 +115,5 @@ int main(){
         printf("%d" , head -> val);
         head = head -> forward;
     }
-    printf("\n");
     return 0;
 }
