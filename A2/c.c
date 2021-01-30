@@ -19,8 +19,9 @@ void dfs(int node){
 
 int main()
 {
-    int m;
-    scanf("%d%d",&n,&m);
+    scanf("%d",&n);
+    int m = n*(n-1)/2 - 1;
+    if(m < 0)m = 0;
     graph = (bool**)malloc(sizeof(bool*) * n);
     visited = (bool*)malloc(sizeof(bool) * n);
     int* deg = (int*)malloc(sizeof(int) * n);
@@ -51,7 +52,7 @@ int main()
     dfs(y);
     bool ans2 = visited[x];
     if((ans1 ^ ans2) && ans1)
-        printf("%d %d" , x+1 , y+1);
-    else  printf("%d %d" , y+1 , x+1);
+        printf("%d %d" , y+1 , x+1);
+    else  printf("%d %d" , x+1 , y+1);
     return 0;
 }
