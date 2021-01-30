@@ -1,2 +1,2 @@
 # DSA
-These are the solutions for DSA course offered by my insti
+These are my solutions for DSA course offered by my insti
