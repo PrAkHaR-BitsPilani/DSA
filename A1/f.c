@@ -39,6 +39,7 @@ void computeFreq(long long L , long long  R , int n){
     if(L == 1)prime[0] = false;
     for(int i = 0 ; i < (R - L + 1) ; i++){
         if(prime[i]){
+            //printf("%d\n" , i+L);
             digfreq(i + L);
         }
     }
@@ -56,6 +57,7 @@ void computeFreq(long long L , long long  R , int n){
 int main(){
     long long  a,b;
     scanf("%lld%lld" , &a , &b);
+    if(a == 0)a = 1;
     int lim = sqrt(b) + 5;
     isPrime = (bool*)malloc(sizeof(bool) * lim);
     for(int i = 0 ; i < lim ; i++)isPrime[i] = true;
