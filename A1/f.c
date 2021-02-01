@@ -39,7 +39,6 @@ void computeFreq(long long L , long long  R , int n){
     if(L == 1)prime[0] = false;
     for(int i = 0 ; i < (R - L + 1) ; i++){
         if(prime[i]){
-            //printf("%d\n" , i+L);
             digfreq(i + L);
         }
     }
