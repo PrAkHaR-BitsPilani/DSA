@@ -65,7 +65,7 @@ void bfs(int node)
 int main()
 {
     int m , a , b;
-    scanf("%d %d %d %d%*c",&n,&m,&a,&b);
+    scanf("%d %d %d %d\n",&n,&m,&a,&b);
     graph = (vertex*)malloc(sizeof(vertex) * n);
     visited = (bool*)malloc(sizeof(bool) * n);
     dist = (int*)malloc(sizeof(int) * n);
@@ -79,7 +79,7 @@ int main()
     }
     int u,v;
     while(m--){
-        scanf("%d %d%*c" , &u , &v);
+        scanf("%d %d\n" , &u , &v);
         vertex* temp = (vertex*)malloc(sizeof(vertex) * n);
         temp -> val = v;
         temp -> next = NULL;
@@ -103,7 +103,5 @@ int main()
             temp -> next = temp1;
         }
     }
-    bfs(a);
-    printf("%d" ,dist[b] * 100);
     return 0;
 }
