@@ -55,7 +55,7 @@ void mergeSort(noble* arr, int l, int r)
     }
 }
 
-int lower_bound(noble* nobles , int l , int r , int k)
+int upper_bound(noble* nobles , int l , int r , int k)
 {
     int ans = r+1;
     int mid = l + (r - l) /2;
@@ -83,7 +83,7 @@ int main(){
         nobles[i].gold += nobles[i-1].gold;
     for (int i = 0; i < n; i++)
     {
-        int loc = lower_bound(nobles , 0 , n-1 , a_skill[i]); // create this    
+        int loc = upper_bound(nobles , 0 , n-1 , a_skill[i]); // create this    
         if(loc == -1)
             printf("0 ");
         else printf("%d " , nobles[loc].gold);
