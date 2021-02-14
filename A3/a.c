@@ -4,7 +4,6 @@
 
 int* A;
 int* S;
-int**memo;
 int n,m,k;
 
 void merge(int* arr, int l, int m, int r)
@@ -54,48 +53,34 @@ void mergeSort(int* arr, int l, int r)
     }
 }
 
-int max(int a , int b)
-{
-    if(a > b)return a;
-    return b;
-}
-
-bool compatible(int i , int j)
-{
-    int diff = A[i] - S[j];
-    if(diff < 0)diff *= -1;
-    return (diff <= k);
-}
-
-int dp(int i , int j)
-{
-    if(i == n || j == m)return 0;
-    if(memo[i][j])
-        return memo[i][j];
-    int a =  -__INT_MAX__;
-    int b = a , c = a;
-    if(compatible(i,j))
-       a = 1 + dp(i+1 , j+1);
-    b = dp(i , j+1);
-    c = dp(i+1 , j);
-    return memo[i][j] = max(max(a,b),c);
-}
-
 int main()
 {
-    scanf("%d %d %d\n" , &n, &m , &k);
+    scanf("%d %d %d%*c" , &n, &m , &k);
     A = (int*)malloc(sizeof(int) * n);
     S = (int*)malloc(sizeof(int) * m);
-    memo = (int**)malloc(sizeof(int*) * n);
     for(int i = 0 ; i < n ; i++)
-    {
-        scanf("%d" , &A[i]);
-        memo[i] = (int*)malloc(m * sizeof(int));
-        for(int j = 0 ; j < m ; j++)memo[i][j] = 0;    
-    }
+        scanf("%d%*c" , &A[i]);
     for(int i = 0 ; i < m ; i++)
-        scanf("%d" , &S[i]);
+        scanf("%d%*c" , &S[i]);
     mergeSort(A , 0, n-1);
     mergeSort(S , 0, m-1);
-    printf("%d" , dp(0,0));
+    int ans = 0;
+    int child = 0;
+    for (int i = 0; i < m; i++)
+    {
+        while(child < n)
+        {
+            int lower = A[child]- k;
+            int upper = A[child] + k;
+            if(S[i] < lower)break;
+            if(S[i] >= lower && S[i] <= upper)
+            {
+                ans++;
+                child++;
+                break;
+            }
+            child++;
+        }
+    }
+    printf("%d" , ans);
 }
