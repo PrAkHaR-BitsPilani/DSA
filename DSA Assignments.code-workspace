@@ -16,7 +16,8 @@
 			"cwchar": "c",
 			"cwctype": "c",
 			"type_traits": "c",
-			"typeinfo": "c"
+			"typeinfo": "c",
+			"stdlib.h": "c"
 		}
 	}
 }
