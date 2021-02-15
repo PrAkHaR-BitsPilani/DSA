@@ -70,7 +70,7 @@ int n,m;
 int main()
 {
     scanf("%d %d%*c" , &n , &m);
-    int* arr = (int*)malloc(sizeof(int) * n);
+    int* arr = (int*)malloc(sizeof(int) * m);
     for (int  i = 0; i < m; i++)scanf("%d%*c" , &arr[i]);
     mergeSort(arr , 0 , m-1);
     int low = 0;
