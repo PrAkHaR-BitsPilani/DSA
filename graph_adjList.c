@@ -4,26 +4,72 @@
 
 #define vertex struct vertex
 
+vertex{
+    int val;
+    vertex* next;    
+};
+
+int n;
+vertex* graph;
+bool* visited;
+
+void init(int n)
+{
+    graph = (vertex*)malloc(sizeof(vertex) * n);
+    visited = (bool*)malloc(sizeof(bool) * n);
+    for(int i = 0 ; i < n ; i++)
+    {
+        visited[i] = false;
+        graph[i].val = i;
+        graph[i].next = NULL;
+    }
+}
+
+void addEdge(int u , int v)
+{
+    vertex* temp = (vertex*)malloc(sizeof(vertex));
+    temp -> val = v;
+    temp -> next = NULL;
+    if(graph[u].next == NULL)
+        graph[u].next = temp;
+    else{
+        vertex* temp1 = graph[u].next;
+        temp -> next = temp1;
+        graph[u].next = temp;
+
+    }
+}
+
+void dfs(int node)
+{
+    if(visited[node])
+        return ;
+    // pre visit node
+    {
+        visited[node] = true;
+    }
+    vertex* list = &graph[node];
+    while (list != NULL)
+    {   
+        dfs(list -> val);
+        list = list -> next;
+    }
+    //post visit node
+    {
+
+    }
+}
+
+int* queue; // ** NOT A GENERIC QUEUE
+int head = 0;
+int size = 0;
+
 int min(int a , int b)
 {
     if(a < b)
         return a;
     return b;
 }
-
-vertex{
-    int val;
-    vertex* next;    
-};
-
-vertex* graph;
-bool* visited;
-int* dist;
-int n = 0;
-
-int* queue; // ** NOT A GENERIC QUEUE
-int head = 0;
-int size = 0;
 
 void push(int x) // specialized for my graph
 {
@@ -39,12 +85,12 @@ int pop() // // specialized for my graph
 
 void bfs(int node)
 {
+    queue = (int*)malloc(sizeof(int)*n);
     if(visited[node])
         return;
     push(node);
     int topNode = pop();
     visited[topNode] = true;
-    dist[topNode] = 0;
     while(topNode != -1)
     {
         vertex* temp = &graph[topNode];
@@ -52,7 +98,6 @@ void bfs(int node)
         {
             if(visited[temp->val] == false)
             {
-                dist[temp -> val] = min(dist[temp->val] , dist[topNode]+ 1);
                 push(temp -> val);
                 visited[temp -> val] = true;
             }
@@ -66,42 +111,12 @@ int main()
 {
     int m , a , b;
     scanf("%d %d %d %d\n",&n,&m,&a,&b);
-    graph = (vertex*)malloc(sizeof(vertex) * n);
-    visited = (bool*)malloc(sizeof(bool) * n);
-    dist = (int*)malloc(sizeof(int) * n);
-    queue = (int*)malloc(sizeof(int)*n);
-    for (int i = 0; i < n; i++)
-    {
-        visited[i] = false;
-        dist[i] = __INT_MAX__;
-        graph[i].val = i;
-        graph[i].next = NULL;
-    }
+    init(n);
     int u,v;
     while(m--){
         scanf("%d %d\n" , &u , &v);
-        vertex* temp = (vertex*)malloc(sizeof(vertex) * n);
-        temp -> val = v;
-        temp -> next = NULL;
-        if(graph[u].next == NULL)
-            graph[u].next = temp;
-        else
-        {
-            vertex* temp1 = graph[u].next;
-            graph[u].next = temp;
-            temp -> next = temp1;
-        }
-        temp = (vertex*)malloc(sizeof(vertex) * n);
-        temp -> val = u;
-        temp -> next = NULL;
-        if(graph[v].next == NULL)
-            graph[v].next = temp;
-        else
-        {
-            vertex* temp1 = graph[v].next;
-            graph[v].next = temp;
-            temp -> next = temp1;
-        }
+        addEdge(u,v);
+        addEdge(v,u);
     }
     return 0;
 }
