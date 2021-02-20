@@ -48,7 +48,7 @@ void dfs(int node)
     {
         visited[node] = true;
     }
-    vertex* list = &graph[node];
+    vertex* list = graph[node].next;
     while (list != NULL)
     {   
         dfs(list -> val);
