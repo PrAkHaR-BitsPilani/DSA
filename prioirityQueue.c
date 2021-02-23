@@ -73,18 +73,3 @@ int removeTop()
     shiftDown(0);
     return res;
 }
-
-int main()
-{
-    init(5 , max);
-    insert(1);
-    insert(2);
-    insert(3);
-    insert(5);
-    insert(4);
-
-    printf("%d " , removeTop());
-    printf("%d " , removeTop());
-    printf("%d " , removeTop());    
-
-}
