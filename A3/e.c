@@ -18,7 +18,7 @@ int loop()
         {
             case 'F':
                 scanf("%*c%*c%d%*c" , &temp);
-                pos += temp;#
+                pos += temp;
             break;
             case 'L':
                 scanf("%*c%*c%*c%*c%d%*c" , &temp);
