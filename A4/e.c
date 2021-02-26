@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define int long long
-
 #define rep(i,n) for(int i = 0 ; i < n ; i++)
 #define REP(i,k,n) for(int i = k ; i < n ; i++)
 
@@ -82,12 +80,12 @@ int manhat(point A , point B)
     return absVal(A.x - B.x) + abs(A.y - B.y);
 }
 
-int calc(point* points , int len)
+long long calc(point* points , int len)
 {
-    int sum = 0;
+    long long sum = 0LL;
     rep(i,len-1)
     {
-        sum += manhat(points[i] , points[i+1]);
+        sum += (long long)manhat(points[i] , points[i+1]);
     }
     return sum;
 }
@@ -111,13 +109,13 @@ int boringTask(point* Q1 , point* Q2 , point* Q3 , point* Q4 , int q1 , int q2 ,
 
 int main(){
     int m;
-    scanf("%lld%*c",&m);
+    scanf("%d%*c",&m);
     point* points = (point*)malloc(sizeof(point) * m); 
     int q1 = 0 , q2 = 0 , q3 = 0 , q4 = 0;
     rep(i,m)
     {
         int x,y;
-        scanf("%lld %lld%*c" , &x , &y);
+        scanf("%d %d%*c" , &x , &y);
         points[i].x = x;
         points[i].y = y;
         q1 += x>=0 && y>0;
@@ -144,12 +142,14 @@ int main(){
     mergeSort(Q3 , 0 , q3 - 1 , ascending);
     mergeSort(Q4 , 0 , q4 - 1 , ascending);
 
-    int ans = calc(Q1 , q1) + calc(Q2 , q2) + calc(Q3 , q3) + calc(Q4 , q4);
+    long long ans = calc(Q1 , q1) + calc(Q2 , q2) + calc(Q3 , q3) + calc(Q4 , q4);
 
-    ans += boringTask(Q1 , Q2 , Q3 , Q4 , q1 , q2 , q3 , q4);
-    ans += boringTask(Q2 , Q3 , Q4 , Q1 , q2 , q3 , q4 , q1);
-    ans += boringTask(Q3 , Q4 , Q1 , Q2 , q3 , q4 , q1 , q2);
-    ans += boringTask(Q4 , Q1 , Q2 , Q3 , q4 , q1 , q2 , q3);
+    ans += (long long)boringTask(Q1 , Q2 , Q3 , Q4 , q1 , q2 , q3 , q4);
+    ans += (long long)boringTask(Q2 , Q3 , Q4 , Q1 , q2 , q3 , q4 , q1);
+    ans += (long long)boringTask(Q3 , Q4 , Q1 , Q2 , q3 , q4 , q1 , q2);
+    ans += (long long)boringTask(Q4 , Q1 , Q2 , Q3 , q4 , q1 , q2 , q3);
 
-    printf("%d" , ans);
+    printf("%lld" , ans);
+    
+    return 0;
 }
