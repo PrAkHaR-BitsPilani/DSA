@@ -150,6 +150,6 @@ int main(){
     ans += (long long)boringTask(Q4 , Q1 , Q2 , Q3 , q4 , q1 , q2 , q3);
 
     printf("%lld" , ans);
-    
+
     return 0;
 }
