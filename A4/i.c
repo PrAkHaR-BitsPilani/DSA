@@ -3,55 +3,53 @@
 #define rep(i,n) for(int i = 0 ; i < n ; i++)
 #define REP(i,k,n) for(int i = k ; i < n ; i++)
 
-#define int long long
-
 const  int MOD = 1e9 + 7;
 
 int pos;
 int big , small , x;
 
-int fact(int n)
+long long fact(int n)
 {
-    if(n <= 1LL)return 1LL;
-    int ans = 1LL;
-    for(int i = 1LL; i <= n; i++)
-        ans *= i , ans %= MOD;
+    if(n <= 1)return 1LL;
+    long long ans = 1LL;
+    for(int i = 1; i <= n; i++)
+        ans *= (long long)i , ans %= (long long)MOD;
     return ans;
 }
 
-int get(int l , int r)
+long long get(int l , int r)
 {
-    int ways = 1;
+    long long ways = 1LL;
     int mid = (l+r) / 2;
     int newL , newR;
     //printf("%lld %lld %lld\n" , l , r , mid);
     if(mid == pos){
-        ways *= 1;
+        ways *= 1LL;
         newL = mid+1;
         newR = r;
     }
     if(mid > pos){
-        ways *= (big--) , ways %= MOD;
+        ways *= (long long)(big--) , ways %= (long long)MOD;
         newL = l;
         newR = mid;
     }
     if(mid < pos){
-        ways *= (small--) , ways%= MOD;
+        ways *= (long long)(small--) , ways%= (long long)MOD;
         newL = mid+1;
         newR = r;
     }
-    if(newL < newR)ways *= get(newL , newR) , ways%= MOD;
+    if(newL < newR)ways *= (long long)get(newL , newR) , ways%= (long long)MOD;
     return ways;
 }
 
 int main()
 {
     int n;
-    scanf("%lld %lld %lld" , &n , &x , &pos);
+    scanf("%d %d %d" , &n , &x , &pos);
     big = n - x;
     small = x-1;
-    int ans = get(0,n);
-    ans *= fact(small+big) , ans %= MOD;
+    long long ans = get(0,n);
+    ans *= fact(small+big) , ans %= (long long)MOD;
     printf("%lld" , ans);
     return 0;
 }
