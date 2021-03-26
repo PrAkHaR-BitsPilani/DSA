@@ -17,7 +17,8 @@
 			"cwctype": "c",
 			"type_traits": "c",
 			"typeinfo": "c",
-			"stdlib.h": "c"
+			"stdlib.h": "c",
+			"stdio.h": "c"
 		}
 	}
 }
