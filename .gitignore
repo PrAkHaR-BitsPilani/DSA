@@ -1,17 +1,6 @@
-A0/a.exe
-A0/input
-A1/a.exe
-A1/input
-A2/a.exe
-A2/input
-A3/a.exe
-A3/input
-A4/a.exe
-A4/input
-A5/a.exe
-A5/input
+input
+*.exe
 
-A6/input
-A6/a.exe
 .vscode/c_cpp_properties.json
 DSA Assignments.code-workspace
+
