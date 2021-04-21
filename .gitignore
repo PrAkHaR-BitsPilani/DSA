@@ -1,5 +1,6 @@
 input
 *.exe
+main.c
 
 .vscode/c_cpp_properties.json
 DSA Assignments.code-workspace
